@@ -1,8 +1,13 @@
 set nocompatible               " be iMproved
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+if g:isWIN
+    set rtp+=$VIM/vimfiles/bundle/vundle/
+    call vundle#rc('$VIM/vimfiles/bundle/')
+else
+    set rtp+=~/.vim/bundle/vundle/
+    call vundle#rc()
+endif
 
 " let Vundle manage Vundle
 " required!
@@ -12,9 +17,10 @@ Bundle 'gmarik/vundle'
 " Code Completions
 "------------------
 Bundle 'Shougo/neocomplcache'
+Bundle 'garbas/vim-snipmate'
 Bundle 'honza/vim-snippets'
 Bundle 'ervandew/supertab'
-Bundle 'honza/snipmate-snippets'
+"Bundle 'honza/snipmate-snippets'
 Bundle 'mattn/zencoding-vim'
 Bundle 'Raimondi/delimitMate'
 "------ snipmate dependencies -------
@@ -100,5 +106,6 @@ Bundle 'tpope/vim-vividchalk'
 Bundle 'Lokaltog/vim-distinguished'
 Bundle 'chriskempson/vim-tomorrow-theme'
 Bundle 'fisadev/fisa-vim-colorscheme'
+Bundle 'tomasr/molokai'
 
 filetype plugin indent on     " required!

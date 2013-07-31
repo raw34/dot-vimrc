@@ -1,4 +1,19 @@
-source ~/.vim/bundles.vim
+" 判断操作系统类型
+if(has("win32") || has("win64"))
+    let g:isWIN = 1
+else
+    let g:isWIN = 0
+endif
+
+if g:isWIN
+    source $VIM/vimfiles/bundles.vim
+    set guifont=Consolas:h11
+    "let g:snippets_dir=$VIM.'/vimfiles/bundle/vim-snippets/snippets/'
+else
+    source ~/.vim/bundles.vim
+    set guifont=Consolas\ h11
+    "let g:snippets_dir='~/.vim/bundle/vim-snippets/snippets/'
+endif
 
 " encoding dectection
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
@@ -13,8 +28,10 @@ syntax on
 " Vim UI
 "--------
 " color scheme
-set background=dark
-color vividchalk
+"set background=dark
+"color vividchalk
+"colorscheme monokai
+colorscheme molokai
 
 " highlight current line
 au WinLeave * set nocursorline nocursorcolumn
@@ -38,7 +55,8 @@ set mouse=a                                                       " use mouse in
 set report=0                                                      " always report number of lines changed                "
 set nowrap                                                        " dont wrap lines
 set scrolloff=5                                                   " 5 lines above/below cursor when scrolling
-set number                                                        " show line numbers
+set relativenumber                                                " show relativenumber
+"set number                                                        " show line numbers
 set showmatch                                                     " show matching bracket (briefly jump)
 set showcmd                                                       " show typed command in status bar
 set title                                                         " show file in titlebar
@@ -224,6 +242,14 @@ cmap w!! w !sudo tee >/dev/null %
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
+" shortcut key
+" \c                  copy to clipboard 
+vmap <leader>c "+y
+" \v                  paste from clipboard 
+imap <leader>v <ESC>"+p
+nmap <leader>v "+p
+vmap <leader>v "+p
+
 " eggcache vim
 nnoremap ; :
 :command W w
@@ -237,10 +263,10 @@ nnoremap ; :
 if has("gui_running")
     set go=aAce  " remove toolbar
     "set transparency=30
-    set guifont=Monaco:h13
+    set guioptions+=r
     set showtabline=2
-    set columns=140
-    set lines=40
+    set columns=120
+    set lines=30
     noremap <D-M-Left> :tabprevious<cr>
     noremap <D-M-Right> :tabnext<cr>
     map <D-1> 1gt
