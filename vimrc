@@ -1,4 +1,4 @@
-" 判断操作系统类型
+" stytem determine
 if(has("win32") || has("win64"))
     let g:isWIN = 1
 else
@@ -8,11 +8,9 @@ endif
 if g:isWIN
     source $VIM/vimfiles/bundles.vim
     set guifont=Consolas:h11
-    "let g:snippets_dir=$VIM.'/vimfiles/bundle/vim-snippets/snippets/'
 else
     source ~/.vim/bundles.vim
-    set guifont=Consolas\ h11
-    "let g:snippets_dir='~/.vim/bundle/vim-snippets/snippets/'
+    set guifont=Consolas\ 11
 endif
 
 " encoding dectection
@@ -265,8 +263,8 @@ if has("gui_running")
     "set transparency=30
     set guioptions+=r
     set showtabline=2
-    set columns=120
-    set lines=30
+    set columns=110
+    set lines=25
     noremap <D-M-Left> :tabprevious<cr>
     noremap <D-M-Right> :tabnext<cr>
     map <D-1> 1gt
