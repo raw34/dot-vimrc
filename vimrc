@@ -13,6 +13,10 @@ else
     set guifont=Consolas\ 11
 endif
 
+" :AuthorInfoDetect   
+let g:vimrc_author='raw34'                  
+let g:vimrc_email='raw34@sina.com'           
+
 " encoding dectection
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 
@@ -73,13 +77,13 @@ set shiftwidth=4    " indent width
 " set smarttab
 set expandtab       " expand tab to space
 
-autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
-autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
-autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
-autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
-autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
-autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
-autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+"autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+"autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+"autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
+"autocmd FileType coffee,javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
+"autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 textwidth=120
+"autocmd FileType html,htmldjango,xhtml,haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=0
+"autocmd FileType sass,scss,css setlocal tabstop=2 shiftwidth=2 softtabstop=2 textwidth=120
 
 " syntax support
 autocmd Syntax javascript set syntax=jquery   " JQuery syntax support
@@ -248,6 +252,8 @@ imap <leader>v <ESC>"+p
 nmap <leader>v "+p
 vmap <leader>v "+p
 
+nmap mr :echo system("D:/xampp/php/php.exe ".shellescape(expand('%')))<CR>
+
 " eggcache vim
 nnoremap ; :
 :command W w
@@ -278,3 +284,44 @@ if has("gui_running")
     map <D-9> 9gt
     map <D-0> :tablast<CR>
 endif
+
+" 编译源文件
+func! CompileCode()
+    exec "w"
+    if &filetype == "c"
+        exec "!gcc -Wall -std=c11 -o %:r %:t"
+    elseif &filetype == "cpp"
+        exec "!g++ -Wall -std=c++11 -o %:r %:t"
+    elseif &filetype == "d"
+        exec "!dmd -wi -unittest %:t"
+    elseif &filetype == "php"
+        exec "!php %:t"
+    elseif &filetype == "lisp"
+        exec "!ccl -l %:t"
+    endif
+endfunc
+
+" \C         一键保存、编译
+imap <leader>C <ESC>:call CompileCode()<CR>
+nmap <leader>C :call CompileCode()<CR>
+
+" 运行可执行文件
+func! RunCode()
+    if &filetype == "c" || &filetype == "cpp" || &filetype == "d"
+        if g:isWIN
+            exec "!%:r.exe"
+        else
+            exec "!./%:r"
+        endif
+    elseif &filetype == "php"
+        exec "!php %:t"
+    elseif &filetype == "lisp"
+        exec "!ccl -l %:t"
+    endif
+endfunc
+
+" \R         一键保存、运行
+imap <leader>R <ESC>:call RunCode()<CR>
+nmap <leader>R :call RunCode()<CR>
+
+
