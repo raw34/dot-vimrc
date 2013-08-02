@@ -203,9 +203,9 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType c setlocal omnifunc=ccomplete#Complete
 
 " SuperTab
-"let g:SuperTabDefultCompletionType='context'
-let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
-let g:SuperTabRetainCompletionType=2
+"let g:SuperTabDefaultCompletionType = 'context'
+"let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
+"let g:SuperTabRetainCompletionType=2
 
 " ctrlp
 set wildignore+=*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store  " MacOSX/Linux
@@ -252,7 +252,7 @@ imap <leader>v <ESC>"+p
 nmap <leader>v "+p
 vmap <leader>v "+p
 
-nmap mr :echo system("D:/xampp/php/php.exe ".shellescape(expand('%')))<CR>
+"nmap mr :echo system("D:/xampp/php/php.exe ".shellescape(expand('%')))<CR>
 
 " eggcache vim
 nnoremap ; :
@@ -284,44 +284,3 @@ if has("gui_running")
     map <D-9> 9gt
     map <D-0> :tablast<CR>
 endif
-
-" 编译源文件
-func! CompileCode()
-    exec "w"
-    if &filetype == "c"
-        exec "!gcc -Wall -std=c11 -o %:r %:t"
-    elseif &filetype == "cpp"
-        exec "!g++ -Wall -std=c++11 -o %:r %:t"
-    elseif &filetype == "d"
-        exec "!dmd -wi -unittest %:t"
-    elseif &filetype == "php"
-        exec "!php %:t"
-    elseif &filetype == "lisp"
-        exec "!ccl -l %:t"
-    endif
-endfunc
-
-" \C         一键保存、编译
-imap <leader>C <ESC>:call CompileCode()<CR>
-nmap <leader>C :call CompileCode()<CR>
-
-" 运行可执行文件
-func! RunCode()
-    if &filetype == "c" || &filetype == "cpp" || &filetype == "d"
-        if g:isWIN
-            exec "!%:r.exe"
-        else
-            exec "!./%:r"
-        endif
-    elseif &filetype == "php"
-        exec "!php %:t"
-    elseif &filetype == "lisp"
-        exec "!ccl -l %:t"
-    endif
-endfunc
-
-" \R         一键保存、运行
-imap <leader>R <ESC>:call RunCode()<CR>
-nmap <leader>R :call RunCode()<CR>
-
-
