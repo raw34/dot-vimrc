@@ -59,14 +59,13 @@ set report=0                                                      " always repor
 set nowrap                                                        " dont wrap lines
 set scrolloff=5                                                   " 5 lines above/below cursor when scrolling
 set relativenumber                                                " show relativenumber
-"set number                                                        " show line numbers
+set number                                                        " show line numbers
 set showmatch                                                     " show matching bracket (briefly jump)
 set showcmd                                                       " show typed command in status bar
 set title                                                         " show file in titlebar
 set laststatus=2                                                  " use 2 lines for the status bar
 set matchtime=2                                                   " show matching bracket for 0.2 seconds
 set matchpairs+=<:>                                               " specially for html
-" set relativenumber
 
 " Default Indentation
 set autoindent
