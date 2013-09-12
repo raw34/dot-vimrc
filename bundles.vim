@@ -99,13 +99,13 @@ Bundle 'kien/rainbow_parentheses.vim'
 "--------------
 " Color Schemes
 "--------------
-"Bundle 'rickharris/vim-blackboard'
-"Bundle 'altercation/vim-colors-solarized'
+Bundle 'rickharris/vim-blackboard'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'rickharris/vim-monokai'
-"Bundle 'tpope/vim-vividchalk'
-"Bundle 'Lokaltog/vim-distinguished'
-"Bundle 'chriskempson/vim-tomorrow-theme'
-"Bundle 'fisadev/fisa-vim-colorscheme'
+Bundle 'tpope/vim-vividchalk'
+Bundle 'Lokaltog/vim-distinguished'
+Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'fisadev/fisa-vim-colorscheme'
 Bundle 'tomasr/molokai'
 
 filetype plugin indent on     " required!
