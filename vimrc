@@ -30,10 +30,8 @@ syntax on
 " Vim UI
 "--------
 " color scheme
-"set background=dark
-"color vividchalk
-"colorscheme monokai
-colorscheme molokai
+set background=dark
+color solarized
 
 " highlight current line
 au WinLeave * set nocursorline nocursorcolumn
@@ -175,7 +173,7 @@ let NERDSpaceDelims=1
 let NERDCompactSexyComs=1
 
 " ZenCoding
-let g:user_zen_expandabbr_key='<C-j>'
+let g:user_emmet_expandabbr_key='<C-j>'
 
 " powerline
 "let g:Powerline_symbols = 'fancy'
@@ -201,17 +199,23 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType c setlocal omnifunc=ccomplete#Complete
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.erlang = '[a-zA-Z]\|:'
 
 " SuperTab
-"let g:SuperTabDefaultCompletionType = 'context'
-"let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
-"let g:SuperTabRetainCompletionType=2
+" let g:SuperTabDefultCompletionType='context'
+let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
+let g:SuperTabRetainCompletionType=2
 
 " ctrlp
 set wildignore+=*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_Store  " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
 " Keybindings for plugin toggle
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
 nmap <F5> :TagbarToggle<cr>
 nmap <F6> :NERDTreeToggle<cr>
 nmap <F3> :GundoToggle<cr>
@@ -238,21 +242,17 @@ autocmd BufReadPost *
       \ endif
 
 " w!! to sudo & write a file
-cmap w!! w !sudo tee >/dev/null %
+cmap w!! %!sudo tee >/dev/null %
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
-" shortcut key
-" \c                  copy to clipboard 
-vmap <leader>c "+y
-" \v                  paste from clipboard 
-imap <leader>v <ESC>"+p
-nmap <leader>v "+p
-vmap <leader>v "+p
-
-"nmap mr :echo system("D:/xampp/php/php.exe ".shellescape(expand('%')))<CR>
+" sublime key bindings
+nmap <D-]> >>
+nmap <D-[> <<
+vmap <D-[> <gv
+vmap <D-]> >gv
 
 " eggcache vim
 nnoremap ; :
