@@ -13,9 +13,9 @@ else
     set guifont=Consolas\ 11
 endif
 
-" :AuthorInfoDetect   
-let g:vimrc_author='raw34'                  
-let g:vimrc_email='raw34@sina.com'     
+" :AuthorInfoDetect
+let g:vimrc_author='raw34'
+let g:vimrc_email='raw34@sina.com'
 
 " encoding dectection
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
@@ -52,7 +52,7 @@ set nofoldenable                                                  " disable fold
 set confirm                                                       " prompt when existing from an unsaved file
 set backspace=indent,eol,start                                    " More powerful backspacing
 set t_Co=256                                                      " Explicitly tell vim that the terminal has 256 colors "
-set mouse=a                                                       " use mouse in all modes
+"set mouse=a                                                       " use mouse in all modes
 set report=0                                                      " always report number of lines changed                "
 set nowrap                                                        " dont wrap lines
 set scrolloff=5                                                   " 5 lines above/below cursor when scrolling
@@ -132,6 +132,20 @@ let g:tagbar_width=30
 let g:tagbar_autofocus = 1
 let g:tagbar_sort = 0
 let g:tagbar_compact = 1
+
+" tag for php
+if executable('phptags')
+    let g:tagbar_type_puppet = {
+        \ 'ctagstype': 'puppet',
+        \ 'kinds': [
+            \'c:class',
+            \'s:site',
+            \'n:node',
+            \'d:definition'
+          \]
+        \}
+endif
+
 " tag for coffee
 if executable('coffeetags')
   let g:tagbar_type_coffee = {
@@ -213,13 +227,15 @@ set wildignore+=*/tmp/*,*.so,*.o,*.a,*.obj,*.swp,*.zip,*.pyc,*.pyo,*.class,.DS_S
 let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$'
 
 " Keybindings for plugin toggle
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
-nmap <F5> :TagbarToggle<cr>
-nmap <F6> :NERDTreeToggle<cr>
-nmap <F3> :GundoToggle<cr>
-nmap <F4> :IndentGuidesToggle<cr>
+" nnoremap <F2> :set invpaste paste?<CR>
+" set pastetoggle=<F2>
+" nmap <F5> :TagbarToggle<cr>
+" nmap <F6> :NERDTreeToggle<cr>
+" nmap <F3> :GundoToggle<cr>
+" nmap <F4> :IndentGuidesToggle<cr>
 nmap  <D-/> :
+nmap <F1> :NERDTreeToggle<cr>
+nmap <F8> :TagbarToggle<cr>
 nnoremap <leader>a :Ack
 nnoremap <leader>v V`]
 
@@ -254,9 +270,9 @@ vmap <D-[> <gv
 vmap <D-]> >gv
 
 " shortcut key
-" \c                  copy to clipboard 
+" \c                  copy to clipboard
 vmap <leader>c "+y
-" \v                  paste from clipboard 
+" \v                  paste from clipboard
 imap <leader>v <ESC>"+p
 nmap <leader>v "+p
 vmap <leader>v "+p
@@ -291,3 +307,23 @@ if has("gui_running")
     map <D-9> 9gt
     map <D-0> :tablast<CR>
 endif
+
+
+" for xdebug
+let g:vdebug_options_defaults = {
+\    "port" : 9001,
+\    "timeout" : 25,
+\    "server" : 'localhost',
+\    "on_close" : 'detach',
+\    "break_on_open" : 1,
+\    "ide_key" : '',
+\    "debug_window_level" : 0,
+\    "debug_file_level" : 0,
+\    "debug_file" : "",
+\    "path_maps" : {},
+\    "watch_window_style" : 'expanded',
+\    "marker_default" : '⬦',
+\    "marker_closed_tree" : '▸',
+\    "marker_open_tree" : '▾',
+\    "continuous_mode"  : 0
+\}

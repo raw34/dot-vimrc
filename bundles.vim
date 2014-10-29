@@ -54,6 +54,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
 Bundle 'bronson/vim-trailing-whitespace'
+Bundle 'joonty/vdebug'
 
 "-------------
 " Other Utils
@@ -88,7 +89,7 @@ Bundle 'tpope/vim-markdown'
 " Bundle 'tpope/vim-endwise'
 
 "------- Go ----------
-Bundle 'jnwhiteh/vim-golang'
+Bundle 'fatih/vim-go'
 
 "------- FPs ------
 Bundle 'kien/rainbow_parentheses.vim'
