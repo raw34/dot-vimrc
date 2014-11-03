@@ -310,7 +310,7 @@ endif
 
 
 " for xdebug
-let g:vdebug_options_defaults = {
+let g:vdebug_options = {
 \    "port" : 9001,
 \    "timeout" : 25,
 \    "server" : 'localhost',
