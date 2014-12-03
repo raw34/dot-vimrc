@@ -53,9 +53,9 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
-"Bundle 'bronson/vim-trailing-whitespace'
+Bundle 'bronson/vim-trailing-whitespace'
 Bundle 'joonty/vdebug'
-Bundle 'bling/vim-airline'
+"Bundle 'bling/vim-airline'
 
 "-------------
 " Other Utils
