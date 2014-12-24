@@ -62,6 +62,7 @@ Bundle 'joonty/vdebug'
 "-------------
 " Bundle 'humiaozuzu/fcitx-status'
 Bundle 'nvie/vim-togglemouse'
+Bundle 'kakkyz81/evervim'
 
 "----------------------------------------
 " Syntax/Indent for language enhancement
