@@ -347,6 +347,6 @@ endif
 
 " for evervim
 let g:evervim_host='app.yinxiang.com'
-let g:evervim_devtoken='S=s37:U=72b2db:E=151d6fc5f60:C=14a7f4b3190:P=1cd:A=en-devtoken:V=2:H=ad00a2c84075eaf70b35c8330c8d7b90'
+let g:evervim_devtoken='S=s37:U=72b2db:E=151d9d29814:C=14a82216ba0:P=1cd:A=en-devtoken:V=2:H=0f90f09e6419494bccaeae3e6df511ba'
 "let g:evervim_host='www.evernote.com'
 "let g:evervim_devtoken='S=s502:U=57a197b:E=151d2cd6946:C=14a7b1c3998:P=1cd:A=en-devtoken:V=2:H=55894c10fbb416a1152e895405008f58'
