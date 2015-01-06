@@ -339,12 +339,12 @@ endif
 
 " for ctags
 if(executable("ctags") && has("ctags"))
-    silent! execute "ctags -R --fields=+aimS --languages=cpp -L cscope.files"
-    silent! execute "ctags -R --fields=+aimS --languages=java -L cscope.files"
-    silent! execute "ctags -R --fields=+aimS --languages=python -L cscope.files"
-    silent! execute "ctags -R --fields=+aimS --languages=perl -L cscope.files"
-    silent! execute "ctags -R --fields=+aimS --languages=php -L cscope.files"
-    silent! execute "ctags -R --fields=+aimS --languages=javascript -L cscope.files"
+    silent! execute "!ctags -R --fields=+aimS --languages=cpp -L cscope.files"
+    silent! execute "!ctags -R --fields=+aimS --languages=java -L cscope.files"
+    silent! execute "!ctags -R --fields=+aimS --languages=python -L cscope.files"
+    silent! execute "!ctags -R --fields=+aimS --languages=perl -L cscope.files"
+    silent! execute "!ctags -R --fields=+aimS --languages=php -L cscope.files"
+    silent! execute "!ctags -R --fields=+aimS --languages=javascript -L cscope.files"
 endif
 
 " for cscope
@@ -355,7 +355,7 @@ if(executable("cscope") && has("cscope"))
     set cst
     set csverb
 
-    silent! execute "!cscope -Rbq"
+    silent! execute '!cscope -Rbq'
 
     " add any database in current directory
     if filereadable("cscope.out")
