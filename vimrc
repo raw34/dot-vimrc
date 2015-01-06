@@ -329,20 +329,41 @@ let g:vdebug_options = {
 \    "continuous_mode"  : 0
 \}
 
+
+" set cscope.files
+if(has('win32'))
+    silent! execute "!dir /b *.h,*.c,*.cpp,*.java,*.py,*.pm,*.pl,*.php,*.js >> cscope.files"
+else
+    silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.py' -o -name '*.pm' -o -name '*.pl' -o -name '*.php' -o -name '*.js' > cscope.files"
+endif
+
+" for ctags
+if(executable("ctags") && has("ctags"))
+    silent! execute "ctags -R --fields=+aimS --languages=cpp -L cscope.files"
+    silent! execute "ctags -R --fields=+aimS --languages=java -L cscope.files"
+    silent! execute "ctags -R --fields=+aimS --languages=python -L cscope.files"
+    silent! execute "ctags -R --fields=+aimS --languages=perl -L cscope.files"
+    silent! execute "ctags -R --fields=+aimS --languages=php -L cscope.files"
+    silent! execute "ctags -R --fields=+aimS --languages=javascript -L cscope.files"
+endif
+
 " for cscope
-if has("cscope")
+if(executable("cscope") && has("cscope"))
     "set csprg=/usr/local/bin/cscope
-    "set csto=0
-    "set cst
-    "set nocsverb
+    set cscopequickfix=s-,c-,d-,i-,t-,e-
+    set csto=0
+    set cst
+    set csverb
+
+    silent! execute "!cscope -Rbq"
+
     " add any database in current directory
     if filereadable("cscope.out")
         cs add cscope.out
-        " else add database pointed to by environment
+    " else add database pointed to by environment
     elseif $CSCOPE_DB != ""
         cs add $CSCOPE_DB
     endif
-    "set csverb
 endif
 
 " for evervim
