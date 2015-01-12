@@ -22,3 +22,5 @@ Session.vim
 bundle
 
 tags
+cscope.*
+ncscope.*

@@ -286,6 +286,7 @@ nnoremap ; :
 :command Q q
 :command Qa qa
 :command QA qa
+:command -nargs=1 Vres vertical resize <args>
 
 " for macvim
 if has("gui_running")
